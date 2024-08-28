@@ -1,0 +1,53 @@
+--- Algoritmo SHELLSORT
+
+.Proposto por Donald Shell
+. Otimizacao do Insertion Sort
+Exemplo:
+	
+	InsertionSort(L,n) {
+		for i =2 to n {
+			k=1
+			while l>1 and L[k] < L[k-1]
+				swap(L[k],L[k-1])
+				k--
+			}
+		}
+	}
+
+
+--- Introduzindo o conceito de GAP para o SHELLSORT
+
+gap = h
+Objetivo: Gerar sequencias h-ordenadas, onde, h inicia como valor alto e diminui ate 1. (InsertionSort, algo muito proximo do melhor caso)
+
+Sequencia de Gaps:
+	:Seq. de Shell: n/2,n/4,n/8,..,1 ( Divisao inteira)
+
+Shellsort(L, n) {
+	h = n//2
+	while h>0 {
+		for i=h to n{
+			j =i
+			while j>= h and L[j-h]> L[j]{
+				swap(L[j], L[j-h])
+				j=j-h
+			}
+		}
+	h=h//2
+	}
+}
+
+--- Melhor caso: L ja esta ordenado
+	h=n//2
+	while h>0{
+		for i=h to n
+			j=i
+		h=h//2	
+	}
+O(N log N)
+
+--- Pior caso: L em ordem decrescente
+	n/2 seq de tam 2
+	n/4 seq de tan 4
+	n/8 seq de tam 8
+

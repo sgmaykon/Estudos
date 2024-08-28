@@ -1,0 +1,68 @@
+Sequencias de GAP
+
+1. Sequencia de Shell
+
+Si = n/2^i
+{n/2,n/4,n/8,....,1}
+
+Pior caso: O(n^2)
+
+2. Sequencia de Hibbard - Pior caso: O(n^3/2)
+
+Si = 2^i -1 , com i=1,2
+
+{1,3,7,15,...}
+
+Gerar a sequencia ate que si >= n/2
+Ex: n=100 -> n/2 = 50
+
+[1,3,7,15,31]
+
+3. Sequencia de Knuth
+
+Si = (3^i -1)/2 , i=1,2,..
+
+{1,4,13,40,...}
+
+Pior caso: O(n^3/2)
+
+4. Sequencia de Pratt
+
+Sucessivos n da forma 2^p * 3^q , p,q=0,1,...
+
+S = {1,2,3,4,6,8,9,12,...}
+
+Como ela é extensa, complexidade de pior caso é O(n(logn)^2)
+
+5. Sequencia de Sedgewick
+
+Si = { q*(2^i - 2^(i/2) + 1, i eh par}
+	{ 8*2^i - 6^((i+1)/2) + 1, i eh impar
+
+Pior caso: O(n ^(4/3))
+
+============================================================================
+Em termos de caso medio, sabe-se que a complexidade pode variar entre O(n(logn^2)) a O(n^(5/4)).
+
+QuickSort:
+
+Partition(L, low, high) {
+	x = L[high]
+	i =low -1
+	for j = low to high-1 {
+		if L[j] <= x {
+			i=i+1
+			swap(L[i],L[j])
+		}
+	}
+	swap(L[high],L[i+1])
+	return (i+1)
+}
+
+QuickSort(L,low,high) {
+	if low < high {
+		q = partition(L,low,high)
+		quicksort(L,low,q-1)
+		quicksort(L,q+1,high)
+	}
+}

@@ -1,0 +1,103 @@
+#==============LISTA ENCADEADA================
+class Node:
+  def __init__(self,key):
+    self.next = None
+    self.key = key
+
+class Lista_Enc:
+  def __init__(self):
+    self.head = None
+    self.size=0
+
+  def add_head(self,key):
+    temp = Node(key)
+    if self.head == None:
+      self.head=temp
+    else:
+      temp.next=self.head
+      self.head = temp
+      self.size +=1
+
+  def add_tail(self,key):
+    cauda = Node(key)
+    if (self.head == None):
+      self.head =cauda
+    else:
+        temp = self.head
+        while (temp.next != None):
+          temp = temp.next
+        temp.next = cauda
+
+    cauda.next = None
+    self.size +=1
+
+    def Busca(self,key):
+      temp = self.head
+      while temp != None:
+        if (temp.key == key):
+          return True
+        else:
+          temp = temp.next
+      return False
+
+    def remove(self,key):
+      atual = self.head
+      anterior = None
+      while (atual!=None):
+        if (atual.key ==key):
+          break
+        else:
+          anterior = atual
+          atual = atual.next
+      if (anterior == None):
+        self.head = atual.next
+      else:
+        anterior.next = atual.next
+      atual.next = None
+      self.size -=1
+
+#==============LISTA ENCADEADA================
+def Select_sort_Enc(L):
+  atual = L.head
+
+  while atual is not None:
+      menor = atual
+      proximo = atual.next
+
+      while proximo is not None:
+          if proximo.key < menor.key:
+              menor = proximo
+          proximo = proximo.next
+
+      aux = atual.key
+      atual.key = menor.key
+      menor.key =aux
+      atual = atual.next
+
+def imprime_lista(head):
+    current = L.head
+    while current is not None:
+        print(current.key, end=" ")
+        current = current.next
+    print()
+
+L = Lista_Enc()
+L.add_head(6)
+L.add_head(11)
+L.add_head(2)
+L.add_head(28)
+L.add_head(41)
+L.add_head(9)
+L.add_head(0)
+L.add_head(4)
+L.add_head(18)
+L.add_head(3)
+
+
+print("Lista original:")
+imprime_lista(L)
+
+Select_sort_Enc(L)
+
+print("Lista ordenada:")
+imprime_lista(L)
