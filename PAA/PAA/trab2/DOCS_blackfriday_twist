@@ -1,0 +1,4 @@
+Basicamente, ordenar o vetor, usar dois intervalos, um que comeca no extremo esqeurdo, outro que comeca no extremo direito
+
+dai, pegar sempre o segundo maior valor.
+Uma abstracao eh dividir o tamanho do vetor por 3, e aplicar um floor pra descobir a quantidade de somas que devem ser feitas
